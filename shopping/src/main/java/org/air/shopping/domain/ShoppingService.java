@@ -11,7 +11,7 @@ public class ShoppingService {
         this.flightInventory = flightInventory;
     }
 
-    public List<Flight> search(Location origin, Location destination) {
-        return flightInventory.search(origin, destination);
+    public List<Flight> search(Departure departure, Location destination) {
+        return flightInventory.search(departure.origin(), destination);
     }
 }
