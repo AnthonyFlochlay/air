@@ -12,10 +12,11 @@ public class FlightInventoryStub implements FlightInventory {
     }
 
     @Override
-    public List<Flight> search(Location origin, Location destination) {
+    public List<Flight> search(Departure departure, Location destination) {
         return flights.stream()
-                .filter(f -> f.origin().equals(origin))
+                .filter(f -> f.origin().equals(departure.origin()))
                 .filter(f -> f.destination().equals(destination))
+                .filter(f -> f.departureDateTime().isAfter(departure.dateTime()))
                 .toList();
     }
 }

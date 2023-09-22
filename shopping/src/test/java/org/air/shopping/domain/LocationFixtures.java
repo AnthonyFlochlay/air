@@ -3,6 +3,9 @@ package org.air.shopping.domain;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static java.util.function.Predicate.not;
+import static org.air.shopping.domain.Randoms.oneOf;
+
 public class LocationFixtures {
 
     private static final List<Location> sampleLocations = Stream.of(
@@ -15,7 +18,12 @@ public class LocationFixtures {
     }
 
     public static Location aLocation() {
-        return Randoms.oneOf(sampleLocations);
+        return oneOf(sampleLocations);
     }
 
+    public static Location aLocationOtherThan(Location excluded) {
+        return oneOf(
+                someLocations().stream().filter(not(f -> f.equals(excluded))).toList()
+        );
+    }
 }

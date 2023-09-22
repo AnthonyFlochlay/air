@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 import static org.air.shopping.domain.AirlineFixtures.anAirline;
 import static org.air.shopping.domain.DepartureFixtures.aDeparture;
 import static org.air.shopping.domain.LocationFixtures.aLocation;
+import static org.air.shopping.domain.LocationFixtures.aLocationOtherThan;
 import static org.air.shopping.domain.Randoms.oneOf;
 
 public class FlightFixtures {
@@ -17,7 +18,16 @@ public class FlightFixtures {
         return sampleFlights;
     }
 
-    private static Flight aFlight() {
+    public static Flight aFlight() {
         return oneOf(sampleFlights);
     }
+
+    public static Flight sameFlightWithAnotherOrigin(Flight searchedFlight) {
+        return searchedFlight.withOrigin(aLocationOtherThan(searchedFlight.origin()));
+    }
+
+    public static Flight sameFlightWithAnotherDestination(Flight searchedFlight) {
+        return searchedFlight.withDestination(aLocationOtherThan(searchedFlight.destination()));
+    }
+
 }
