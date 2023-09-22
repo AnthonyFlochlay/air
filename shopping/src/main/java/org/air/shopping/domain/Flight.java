@@ -12,7 +12,7 @@ public record Flight(Departure departure, Location destination, Airline airline)
     }
 
     public ZonedDateTime departureDateTime() {
-        return departure.dateTime();
+        return departure.departureTime();
     }
 
     public Flight withOrigin(Location otherOrigin) {

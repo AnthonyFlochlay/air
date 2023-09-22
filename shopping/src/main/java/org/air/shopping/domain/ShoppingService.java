@@ -11,8 +11,8 @@ public class ShoppingService {
         this.flightInventory = flightInventory;
     }
 
-    public List<Flight> search(Departure departure, Location destination) {
-        System.out.printf("Searching flights from %s to %s%n", departure, destination);
-        return flightInventory.search(departure, destination);
+    public List<Flight> search(SearchByDeparture searchByDeparture) {
+        System.out.printf("Searching flights from %s to %s%n", searchByDeparture.departure(), searchByDeparture.destination());
+        return flightInventory.search(searchByDeparture);
     }
 }
